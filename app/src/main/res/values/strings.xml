@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MornHouseTT</string>
+    <string name="input_a_number">Input a number</string>
+    <string name="get_fact">Get Fact</string>
+    <string name="get_random_fact">Get Random Fact</string>
+    <string name="hyphen">—</string>
+</resources>
