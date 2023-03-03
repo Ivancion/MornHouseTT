@@ -8,9 +8,11 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mornhousett.R
 import com.example.mornhousett.databinding.ActivityMainBinding
+import com.example.mornhousett.other.collectLatestLifecycleFlow
 import com.example.mornhousett.other.collectLifecycleFlow
 import com.example.mornhousett.ui.detail.DetailActivity
 import com.example.mornhousett.ui.detail.EXTRA_FACT_ID
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         collectLifecycleFlow(viewModel.facts) {
             rvAdapter.differ.submitList(it)
+        }
+
+        collectLatestLifecycleFlow(viewModel.errorMessage) {
+            Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
         }
 
         binding.btnGetFact.setOnClickListener {
